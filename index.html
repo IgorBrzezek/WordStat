@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordStats - Display Capabilities</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .display-option {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #e9e9e9;
+            border-left: 5px solid #0056b3;
+            border-radius: 4px;
+        }
+        .display-option img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .code-block {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: "Courier New", Courier, monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WordStats - Display Capabilities</h1>
+        <p>
+            WordStats (<code>ws.py</code>) is a versatile command-line tool designed to analyze word length statistics in text files.
+            Beyond raw data, it offers several intuitive ways to visualize the results, catering to different preferences and environments.
+            Below are the primary display options available.
+        </p>
+
+        <h2>Display Options Overview</h2>
+
+        <div class="display-option">
+            <h3>1. Formatted Tables</h3>
+            <p>
+                The default output mode provides a clear, tabular summary of word length distributions.
+                Each row represents a specified length range (or individual length if <code>-len auto</code> is used),
+                showing the count of words falling into that range and their percentage of the total.
+            </p>
+            <p>
+                Command example:
+            </p>
+            <pre class="code-block"><code>python ws.py -in your_file.txt -len 1-5,6-10,11-15</code></pre>
+        </div>
+
+        <div class="display-option">
+            <h3>2. Text-based Graphs (TUI - Terminal User Interface)</h3>
+            <p>
+                For quick visual insights directly in your terminal, WordStats can generate horizontal or vertical bar charts.
+                These text-based graphs are particularly useful for CLI environments and can be enhanced with color for better readability.
+            </p>
+            <p>
+                Command examples:
+            </p>
+            <pre class="code-block"><code># Horizontal bar chart with colors
+python ws.py -in your_file.txt -len auto --graph h --color
+
+# Vertical bar chart
+python ws.py -in your_file.txt -len 1-5,6-10 --graph v</code></pre>
+            <p>Example of a Text-based Graph (TUI):</p>
+            <img src="img/tui.png" alt="Text-based Graph (TUI) example">
+        </div>
+
+        <div class="display-option">
+            <h3>3. Graphical User Interface (GUI) Chart</h3>
+            <p>
+                For a more interactive and visually rich representation, WordStats can leverage <code>matplotlib</code> to produce a graphical bar chart.
+                This option opens a separate window displaying the word length distribution, making it ideal for presentations or detailed analysis.
+                This feature requires the <code>matplotlib</code> library to be installed.
+            </p>
+            <p>
+                Command example:
+            </p>
+            <pre class="code-block"><code># GUI chart (requires matplotlib)
+python ws.py -in your_file.txt -len auto --gui --graph h # --graph h or v is currently also needed</code></pre>
+            <p>Example of a Graphical Chart (GUI):</p>
+            <img src="img/gui.png" alt="Graphical User Interface (GUI) chart example">
+        </div>
+
+        <p>
+            With these varied display options, WordStats ensures that you can analyze and present your word length statistics in the most effective way possible, whether you prefer raw data, terminal graphics, or rich visual plots.
+        </p>
+    </div>
+</body>
+</html>
